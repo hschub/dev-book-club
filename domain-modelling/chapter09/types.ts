@@ -48,10 +48,12 @@ export type PriceOrder = (
 
 export type PriceOrder$ = (order: ValidatedOrder) => PricedOrder;
 
+export type PlaceOrderResult = { pricedOrder: PricedOrder };
+
 export type PlaceOrder = (
   validateOrder: ValidateOrder$,
   priceOrder: PriceOrder$,
   order: UnvalidatedOrder
-) => boolean;
+) => PlaceOrderResult;
 
-export type PlaceOrder$ = (order: UnvalidatedOrder) => boolean;
+export type PlaceOrder$ = (order: UnvalidatedOrder) => PlaceOrderResult;
