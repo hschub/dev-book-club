@@ -39,13 +39,19 @@ export type ValidateOrder = (
   order: UnvalidatedOrder
 ) => ValidatedOrder;
 
+export type ValidateOrder$ = (order: UnvalidatedOrder) => ValidatedOrder;
+
 export type PriceOrder = (
   getProductPrice: GetProductPrice,
-  order: UnvalidatedOrder
-) => number;
+  order: ValidatedOrder
+) => PricedOrder;
+
+export type PriceOrder$ = (order: ValidatedOrder) => PricedOrder;
 
 export type PlaceOrder = (
-  validateOrder: ValidateOrder,
-  priceOrder: PriceOrder,
+  validateOrder: ValidateOrder$,
+  priceOrder: PriceOrder$,
   order: UnvalidatedOrder
 ) => boolean;
+
+export type PlaceOrder$ = (order: UnvalidatedOrder) => boolean;
