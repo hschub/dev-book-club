@@ -11,7 +11,7 @@
 import { ValidateOrder$, PriceOrder$, PlaceOrder$ } from "./types";
 
 import { checkAddressExists } from "./checkAddressExists";
-import { checkProductCodeExists } from "./checkProdutCodeExists";
+import { checkProductCodeExists } from "./checkProductCodeExists";
 import { getProductPrice } from "./getProductPrice";
 import { validateOrder } from "./validateOrder";
 import { priceOrder } from "./priceOrder";
