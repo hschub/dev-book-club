@@ -1,23 +1,23 @@
 export type Result<T> =
   | { kind: "Ok"; value: T }
-  | { kind: "Error"; error: string }; // Use string for error to keep it simple
+  | { kind: "Error"; reason: string };
 
 function ok<T>(value: T): Result<T> {
   return { kind: "Ok", value };
 }
 
+function err<T>(reason: string): Result<T> {
+  return { kind: "Error", reason };
+}
+
 // Functions
 
 function isPositive(value: number): Result<number> {
-  return value >= 0
-    ? { kind: "Ok", value }
-    : { kind: "Error", error: "Value is not positive" };
+  return value >= 0 ? ok(value) : err("Value is not positive");
 }
 
 function isEven(value: number): Result<number> {
-  return value % 2 === 0
-    ? { kind: "Ok", value }
-    : { kind: "Error", error: "Value is not even" };
+  return value % 2 === 0 ? ok(value) : err("Value is not even");
 }
 
 // Bind functions
